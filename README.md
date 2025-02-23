@@ -1,2 +1,2 @@
 # TwToYt
-Download twitch vods collections and upload to youtube 
+Descarga una lista de videos de youtube o Twitch y lo sube automaticamente a youtube
