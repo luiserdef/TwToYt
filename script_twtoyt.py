@@ -80,10 +80,10 @@ except Exception as e:
     sys.exit(1)
 
 def clean_title(title,output_filename):
-    title = title.strip()  # Eliminar espacios extra
-    title = re.sub(r'[<>:"/\\|?*]', '', title)  # Quitar caracteres inválidos del título
-    title = re.sub(r'[^\x00-\x7F]+', '', title)  # Eliminar caracteres no ASCII (emojis y similares)
-    title = title[:100]  # Limitar a los primeros 100 caracteres
+    title = title.strip()  # Elimina espacios extras
+    title = re.sub(r'[<>:"/\\|?*]', '', title)  # Quita caracteres inválidos del título
+    title = re.sub(r'[^\x00-\x7F]+', '', title)  # Elimina caracteres no ASCII (emojis y similares)
+    title = title[:100]  # Limita a los primeros 100 caracteres (limite para titulos en youtube)
     return title if title.strip() else f"{output_filename} - Video sin titulo"
 
 
@@ -94,11 +94,11 @@ def uploadToYoutube(output_filename,title):
             body={
                 "snippet": {
                     "title": clean_title(title,output_filename),
-                    "description": "Irina Wallace",
-                    "tags": ["Twitch", "Gaming"],
-                    "categoryId": "20"
+                    "description": "**Agrega Descripción*",
+                    "tags": ["Twitch","Youtube"], #cambiar
+                    "categoryId": "20" #cambiar
                 },
-                "status": {"privacyStatus": "private"}
+                "status": {"privacyStatus": "private"} #cambiar
             },
             media_body=MediaFileUpload(output_filename, resumable=True)
         )
